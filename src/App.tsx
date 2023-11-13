@@ -11,8 +11,9 @@ function App() {
 
     async function loadNote(){
       try {
-        const response = await fetch("/api/notes", {method: "GET"});
+        const response = await fetch("/api/notes", {method: "GET", });
         const notes = await response.json();
+        console.log(notes);
         setNotes(notes);
       } catch (error) {
         console.error(error);
