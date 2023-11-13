@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Example from './components/Example'
-import { Note } from './models/note';
+import { Note as NoteModel } from './models/note';
+import Note from './components/Note';
 
 function App() {
 
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<NoteModel[]>([]);
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    async function loadNote(){
+    async function loadNote() {
       try {
-        const response = await fetch("/api/notes", {method: "GET", });
+        const response = await fetch("/api/notes", { method: "GET", });
         const notes = await response.json();
         console.log(notes);
         setNotes(notes);
@@ -19,16 +20,18 @@ function App() {
         console.error(error);
         alert(error);
       }
-      
+
     }
     loadNote();
 
-  },[]);
+  }, []);
 
   return (
     <>
-    <Example></Example>
-    {JSON.stringify(notes)}
+      <Example></Example>
+      {notes.map(note => <Note note={note} key={note._id} />
+
+      )}
     </>
   );
 }
