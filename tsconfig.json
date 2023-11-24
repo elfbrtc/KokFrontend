@@ -13,16 +13,14 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "NodeNext",
-    "baseUrl": "src",
-    "outDir": "dist",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "sourceMap": true,
     "noEmit": true,
-    "noImplicitAny": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src"
+  ]
 }
